@@ -10,12 +10,6 @@ Users could search for other users.
 Users could create Posts to be visible for all users.
 User can search for Posts created by other users.
 
-# Run Back-end
-node app
-
-# Run Front-end
-npm run dev
-
 # Install Mongodb container
 sudo docker run -itd --name mongodb-uacs mongodb/mongodb-community-server
 
@@ -43,5 +37,4 @@ db.account.find({parentId: {$not: {$eq: ''}}})
 db.account.find({parentId: ''}) // Show institution account
 
 Demo Video:
-
-
+https://youtu.be/ewzoNxFXkNA
