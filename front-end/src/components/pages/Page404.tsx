@@ -5,7 +5,8 @@ import SideNavigation from "../partials/SideNavigation";
 function Page404(){
     return (
         <>
-        <Header /><div className="clearfix"></div><div className="dashboard-container">
+        <div className="clearfix"></div>
+        <div className="dashboard-container">
         <div className="dashboard-sidebar">
             <div className="dashboard-sidebar-inner" data-simplebar>
                 <SideNavigation />

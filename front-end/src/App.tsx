@@ -15,6 +15,7 @@ import {
 import './App.css'
 import Posts from './components/pages/Posts';
 import Papers from './components/pages/Papers';
+import Page404 from './components/pages/Page404';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/search" element={<Search />} />
       <Route path="/search/accountPapers/:accountId" element={<Papers />} />
+      <Route path="*" element={<Page404 />} />
     </Routes>
   </Router>
   )

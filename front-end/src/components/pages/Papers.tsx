@@ -106,13 +106,13 @@ function Papers(){
 
                                                     <div className="freelancer-avatar">
                                                         <div className="verified-badge"></div>
-                                                        <a href={"/posts/" + account.accountId}><img src="/src/assets/images/user-avatar-big-01.jpg" alt="" /></a>
+                                                        <a href={"/search/accountPapers/" + account.accountId}><img src="/src/assets/images/user-avatar-big-01.jpg" alt="" /></a>
                                                     </div>
 
                                                     <div className="freelancer-name">
                                                         <h4 style={{cursor:'unset'}}>
                                                             {!account.parentId && <strong title="Institution Account" style={{marginRight:'10px', color: 'green', fontSize:'20px'}}><i className="icon-line-awesome-institution"></i></strong>}
-                                                            <a href={"/posts/" + account.accountId}>{account.name} - {account.title}</a>
+                                                            <a href={"/search/accountPapers/" + account.accountId}>{account.name} - {account.title}</a>
                                                         </h4>
                                                         <span className="freelancer-detail-item"><i className="icon-feather-mail"></i> {account.email}</span>
                                                         <span className="freelancer-detail-item"><i className="icon-feather-phone"></i> {account.phone}</span>

@@ -59,12 +59,12 @@ function SearchItem({item, createMessage}: any){
                     <div className="margin-top-10 margin-bottom-10">{item.title}</div>
                     <span className="freelancer-detail-item"><i className="icon-feather-mail"></i> {item.email}</span>
                     <span className="freelancer-detail-item"><i className="icon-feather-phone"></i> {item.phone}</span>
-                    <a href={"/posts/" + item.accountId}>
+                    <a href={"/posts/" + item.accountId} title="View Posts of this Account">
                         <span style={{color:'#9d2a2a', fontWeight:'bold'}} className="freelancer-detail-item"><i className="icon-material-outline-star-border"></i>View Posts</span>
                     </a>
 
                     {item.hasScholarAccount && 
-                        <a href={"/search/accountPapers/" + item.accountId} target="_blank">
+                        <a href={"/search/accountPapers/" + item.accountId} title="View Google Scholar Papers">
                             <span style={{color:'#9d2a2a', fontWeight:'bold'}} className="freelancer-detail-item"><i className="icon-material-outline-star-border"></i>Google Scholar</span>
                         </a>
                     }

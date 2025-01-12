@@ -158,7 +158,7 @@ function CreateAccount(){
                                             <div className="row">
                                                 <div className="col-xl-4">
                                                     <div className="submit-field">
-                                                        <h5>Current Password</h5>
+                                                        <h5>Current Admin Password</h5>
                                                         <input type="password" className="with-border" value={currentPassword}
                                                             onChange={(e) => {setCurrentPassword(e.target.value)}}/>
                                                     </div>
@@ -166,7 +166,7 @@ function CreateAccount(){
 
                                                 <div className="col-xl-4">
                                                     <div className="submit-field">
-                                                        <h5>New Password</h5>
+                                                        <h5>Account Password</h5>
                                                         <input type="password" className="with-border" value={newPassword}
                                                             onChange={(e) => {setNewPassword(e.target.value)}}/>
                                                     </div>
@@ -174,7 +174,7 @@ function CreateAccount(){
 
                                                 <div className="col-xl-4">
                                                     <div className="submit-field">
-                                                        <h5>Repeat New Password</h5>
+                                                        <h5>Repeat Account Password</h5>
                                                         <input type="password" className="with-border" value={confirmPassword}
                                                             onChange={(e) => {setConfirmPassword(e.target.value)}}/>
                                                     </div>

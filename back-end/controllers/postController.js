@@ -96,12 +96,6 @@ const post_index = (req, res, db) => {
         }
     })
     .then((result) => {
-
-        /*
-        let accountInfo = {};
-        if(accountId){
-            accountInfo = getAccount(accountId);
-        }*/
         let accountInfo = {};
         if(accountId){
             db.collection('account').findOne({accountId: new ObjectId(accountId)})
@@ -155,7 +149,6 @@ const post_create = (req, res, db) => {
         creationDate: new Date()
     };
 
-    console.log(createObject)
     // Do the Insertion
     db.collection('post')
     .insertOne(createObject)
