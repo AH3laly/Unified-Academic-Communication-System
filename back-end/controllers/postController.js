@@ -39,6 +39,10 @@ const post_index = (req, res, db) => {
 
     let items = [];
 
+    //let accountInfo = {};
+    //accountInfo = db.collection('account').findOne({accountId: new ObjectId(accountId)}).then((result) => {return result});
+    //console.log(accountInfo);
+
     const getItemsCount = (responseToSend) => {
 
         responseToSend.pages = [];
@@ -93,10 +97,34 @@ const post_index = (req, res, db) => {
     })
     .then((result) => {
 
-        getItemsCount({
-            items: items,
-            currentPage: currentPage
-        });
+        /*
+        let accountInfo = {};
+        if(accountId){
+            accountInfo = getAccount(accountId);
+        }*/
+        let accountInfo = {};
+        if(accountId){
+            db.collection('account').findOne({accountId: new ObjectId(accountId)})
+            .then((result) => {
+                delete result.password;
+                delete result.scholarApiKey;
+                delete result.scholarAuthorId;
+                accountInfo = result;
+                getItemsCount({
+                    items: items,
+                    account: accountInfo,
+                    currentPage: currentPage
+                });
+            });
+        } else {
+            getItemsCount({
+                items: items,
+                account: accountInfo,
+                currentPage: currentPage
+            });
+        }
+        
+
     })
     .catch(() => {
         res.status(500).json({ error: 'Could not fetch the document' })

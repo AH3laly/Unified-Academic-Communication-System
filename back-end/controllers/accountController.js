@@ -299,7 +299,7 @@ const account_login = (req, res, db) => {
     db.collection('account')
     .findOne({
         email: req.query.username, password: req.query.password
-    }, {projection: {accountId: 1, parentId: 1, email: 1, phone: 1, name: 1, title: 1, active: 1, password: 1}})
+    }, {projection: {accountId: 1, parentId: 1, email: 1, phone: 1, name: 1, title: 1, active: 1, password: 1, scholarApiKey: 1, scholarAuthorId: 1}})
     .then((result) => {
         result.parentName = '';
         req.session.user = result;
@@ -433,6 +433,8 @@ const account_update = (req, res, db) => {
         title: req.body.title,
         email: req.body.email,
         phone: req.body.phone,
+        scholarApiKey: req.body.scholarApiKey,
+        scholarAuthorId: req.body.scholarAuthorId,
     };
 
     if(req.body.newPassword){

@@ -62,6 +62,12 @@ function SearchItem({item, createMessage}: any){
                     <a href={"/posts/" + item.accountId}>
                         <span style={{color:'#9d2a2a', fontWeight:'bold'}} className="freelancer-detail-item"><i className="icon-material-outline-star-border"></i>View Posts</span>
                     </a>
+
+                    {item.hasScholarAccount && 
+                        <a href={"/search/accountPapers/" + item.accountId} target="_blank">
+                            <span style={{color:'#9d2a2a', fontWeight:'bold'}} className="freelancer-detail-item"><i className="icon-material-outline-star-border"></i>Google Scholar</span>
+                        </a>
+                    }
                     
                     <div className="buttons-to-right always-visible margin-top-10 margin-bottom-5">
                         <input type="text" placeholder="Enter your message" style={{width:'400px', display:'inline-block'}} onChange={e => setMessage(e.target.value)}/>
@@ -168,6 +174,7 @@ function Search(){
                                 </div>
                                 
                                 <div className="content">
+                                    {items.length === 0  && <div style={{textAlign: "center", padding: '20px', fontWeight: 'bold'}}>No Accounts</div>}
                                     <ul className="dashboard-box-list">
                                         {items.map((item, index) => <SearchItem key={index} item={item} createMessage={createMessage} />)}
                                     </ul>

@@ -67,6 +67,8 @@ function Profile(){
     const [title, setTitle] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [scholarApiKey, setScholarApiKey] = useState('');
+    const [scholarAuthorId, setScholarAuthorId] = useState('');
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -79,6 +81,8 @@ function Profile(){
                 title: title, 
                 email: email, 
                 phone: phone, 
+                scholarApiKey: scholarApiKey,
+                scholarAuthorId: scholarAuthorId,
                 newPassword: newPassword, 
                 currentPassword: currentPassword, 
                 confirmPassword: confirmPassword
@@ -100,8 +104,8 @@ function Profile(){
             setTitle(data.content.userInfo.title);
             setEmail(data.content.userInfo.email);
             setPhone(data.content.userInfo.phone);
-            setName(data.content.userInfo.name);
-            setName(data.content.userInfo.name);
+            setScholarApiKey(data.content.userInfo.scholarApiKey);
+            setScholarAuthorId(data.content.userInfo.scholarAuthorId);
         });
     };
 
@@ -189,6 +193,24 @@ function Profile(){
                                                     </div>
                                                 </div>
 
+                                            </div>
+                                            <div className="row">
+                                            <div className="col-xl-4">
+                                                    <div className="submit-field">
+                                                        <h5>Google Scholar API-Key</h5>
+                                                        <input type="text" className="with-border" value={scholarApiKey}
+                                                            onChange={(e) => {setScholarApiKey(e.target.value)}}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="col-xl-4">
+                                                    <div className="submit-field">
+                                                        <h5>Google Scholar Author ID</h5>
+                                                        <input type="text" className="with-border" value={scholarAuthorId}
+                                                            onChange={(e) => {setScholarAuthorId(e.target.value)}}
+                                                        />
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-xl-4">

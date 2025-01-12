@@ -36,6 +36,12 @@ User: admin@mmu.edu.my Password: password
 User: admin@unisza.edu.my Password: password
 User: admin@upm.edu.my Password: password
 
+
+# Mongodb Commands:
+Show Non Institution Accounts:
+db.account.find({parentId: {$not: {$eq: ''}}})
+db.account.find({parentId: ''}) // Show institution account
+
 Demo Video:
 
 

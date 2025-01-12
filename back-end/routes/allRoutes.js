@@ -27,6 +27,8 @@ function allRoutes(db){
 
     // Search Controller
     router.get('/search', (req, res) => { searchController.search_index (req, res, db); });
+    router.get('/search/accountPapers', (req, res) => { searchController.search_show_account_papers (req, res, db); });
+    
 
     // Post Controller
     router.get('/post', (req, res) => { postController.post_index (req, res, db); });

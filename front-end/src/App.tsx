@@ -14,6 +14,7 @@ import {
 
 import './App.css'
 import Posts from './components/pages/Posts';
+import Papers from './components/pages/Papers';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="/posts/:targetAccountId" element={<Posts />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/search/accountPapers/:accountId" element={<Papers />} />
     </Routes>
   </Router>
   )

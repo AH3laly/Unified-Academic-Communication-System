@@ -19,7 +19,7 @@ function StatusMessageBox({statusMessage, statusError}: any){
     );
 }
 
-function fetchItems({setItems, setPagination, params} :any){
+function fetchItems({setItems, setPagination, setTargetAccount, params} :any){
     fetch(`http://localhost:3000/post?page=${params.page}&searchString=${params.searchString}&accountId=${params.accountId}`, {
         method: 'GET',
         credentials: 'include'
@@ -29,10 +29,35 @@ function fetchItems({setItems, setPagination, params} :any){
     })
     .then(data => {
         setItems(data.content.items);
+        setTargetAccount(data.content.account || {});
         setPagination({pages: data.content.pages, currentPage: data.content.currentPage});
     });
 }
 
+function AccountInfo({account}: any){
+    return (
+        <li>
+            <div className="freelancer-overview manage-candidates">
+                <div className="freelancer-overview-inner">
+
+                    <div className="freelancer-avatar">
+                        <div className="verified-badge"></div>
+                        <a href={"/posts/" + account.accountId}><img src="/src/assets/images/user-avatar-big-01.jpg" alt="" /></a>
+                    </div>
+
+                    <div className="freelancer-name">
+                        <h4 style={{cursor:'unset'}}>
+                            {!account.parentId && <strong title="Institution Account" style={{marginRight:'10px', color: 'green', fontSize:'20px'}}><i className="icon-line-awesome-institution"></i></strong>}
+                            <a href={"/posts/" + account.accountId}>{account.name} - {account.title}</a>
+                        </h4>
+                        <span className="freelancer-detail-item"><i className="icon-feather-mail"></i> {account.email}</span>
+                        <span className="freelancer-detail-item"><i className="icon-feather-phone"></i> {account.phone}</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    )
+}
 function SearchTextBox({searchString, setSearchString, onSearch, targetAccountId}: any){
     return (
         <div className="keywords-container" style={{width: '500px'}}>
@@ -121,6 +146,7 @@ function Posts(){
 
     const [items, setItems] = useState([]);
     const [pagination, setPagination] = useState({pages:[], currentPage: 1});
+    const [targetAccount, setTargetAccount] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
     const [searchString, setSearchString] = useState('');
     const [statusMessage, setStatusMessage] = useState('');
@@ -143,7 +169,8 @@ function Posts(){
         fetchItems({
             params: {page: page, searchString: searchString, accountId: targetAccountId || ''},
             setItems: setItems,
-            setPagination: setPagination
+            setPagination: setPagination,
+            setTargetAccount: setTargetAccount
         })
     };
 
@@ -163,7 +190,7 @@ function Posts(){
                 <div className="dashboard-content-inner">
                     <h3>Hello {session.name} !</h3>
                     <span>We are glad to see you again!</span>
-                    <Breadcrumb title="Update Profile" />
+                    <Breadcrumb title="Posts" />
                     <div className="row">
                     
                         <div className="col-xl-12">
@@ -196,8 +223,10 @@ function Posts(){
 
                                 <div className="content">
                                     <ul className="dashboard-box-list">
+                                        {targetAccountId && <AccountInfo account={targetAccount} />}
                                         {items.map((item, index) => <PostItem key={index} item={item} />)}
                                     </ul>
+                                    {items.length === 0  && <div style={{textAlign: "center", padding: '20px', fontWeight: 'bold'}}>No Posts</div>}
                                 </div>
                             </div>
                             
